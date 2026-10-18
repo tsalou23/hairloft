@@ -67,17 +67,18 @@ export default function Gallery({ config }) {
               className="group relative mb-2.5 block w-full break-inside-avoid overflow-hidden text-left"
             >
               {image.video ? (
-                <video
-                  src={image.video}
-                  className="w-full object-cover"
-                  style={{aspectRatio: image.ratio === 'square' ? '1/1' : image.ratio === 'landscape' ? '16/9' : '9/16'}}
-                  muted
-                  playsInline
-                  loop
-                  preload="metadata"
-                  onMouseEnter={e => e.target.play()}
-                  onMouseLeave={e => { e.target.pause(); e.target.currentTime = 0; }}
-                />
+                <div style={{aspectRatio: image.ratio === 'square' ? '1/1' : image.ratio === 'landscape' ? '16/9' : '9/16'}} className="w-full">
+                  <video
+                    src={image.video}
+                    className="w-full h-full object-cover"
+                    muted
+                    playsInline
+                    loop
+                    preload="metadata"
+                    onMouseEnter={e => e.target.play()}
+                    onMouseLeave={e => { e.target.pause(); e.target.currentTime = 0; }}
+                  />
+                </div>
               ) : (
                 <SmartImage src={image.src} alt={image.alt} ratio={image.ratio || "portrait"} crop={image.crop} />
               )}
