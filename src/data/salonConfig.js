@@ -217,35 +217,7 @@ export const salonConfig = {
     eyebrow: "The chairs",
     heading: "Who you'll",
     headingAccent: "meet",
-    members: [
-      {
-        name: "Sample stylist one",
-        role: "Founder · colour",
-        image: {
-          src: "https://media.db.com/images/public/6ad4a3a5bb1e32d62f8bc86d/b239386d9_generated_86c58124.png",
-          alt: "Stylist portrait",
-          ratio: "tall",
-        },
-      },
-      {
-        name: "Sample stylist two",
-        role: "Cutting · barbering",
-        image: {
-          src: "https://media.db.com/images/public/6ad4a3a5bb1e32d62f8bc86d/13ce9f45b_generated_762effd8.png",
-          alt: "Stylist portrait",
-          ratio: "tall",
-        },
-      },
-      {
-        name: "Sample stylist three",
-        role: "Curls · textured hair",
-        image: {
-          src: "https://media.db.com/images/public/6ad4a3a5bb1e32d62f8bc86d/8b20ffdd8_generated_69f7acd7.png",
-          alt: "Stylist portrait",
-          ratio: "tall",
-        },
-      },
-    ],
+    members: [],
   },
 
   /* ------------------------------------------------------------ testimonials */
