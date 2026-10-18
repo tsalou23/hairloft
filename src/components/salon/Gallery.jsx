@@ -53,46 +53,31 @@ export default function Gallery({ config }) {
           )}
         </div>
 
-        <div className="mt-12 gap-2.5 [column-fill:_balance] sm:columns-2 lg:columns-3">
+        <div className="mt-12 grid grid-cols-3 gap-1 sm:grid-cols-4 lg:grid-cols-5">
           {filtered.map((image, index) => (
             <button
-              key={image.src}
+              key={image.video || image.src}
               type="button"
-              onMouseEnter={() => setOpenIndex(index)}
-              onMouseLeave={() => setOpenIndex(-1)}
-              onFocus={() => setOpenIndex(index)}
-              onBlur={() => setOpenIndex(-1)}
               onClick={() => setLightboxIndex(index)}
-              aria-label={`Open image: ${image.alt || "gallery photo"}`}
-              className="group relative mb-2.5 block w-full break-inside-avoid overflow-hidden text-left"
+              aria-label={`Open: ${image.alt || "gallery photo"}`}
+              className="relative aspect-square w-full overflow-hidden bg-brand-ink/10"
             >
               {image.video ? (
-                <div style={{aspectRatio: image.ratio === 'square' ? '1/1' : image.ratio === 'landscape' ? '16/9' : '9/16'}} className="w-full">
-                  <video
-                    src={image.video}
-                    className="w-full h-full object-cover"
-                    muted
-                    playsInline
-                    loop
-                    preload="metadata"
-                    onMouseEnter={e => e.target.play()}
-                    onMouseLeave={e => { e.target.pause(); e.target.currentTime = 0; }}
-                  />
-                </div>
+                <video
+                  src={image.video}
+                  className="h-full w-full object-cover"
+                  muted
+                  playsInline
+                  preload="metadata"
+                />
               ) : (
-                <SmartImage src={image.src} alt={image.alt} ratio={image.ratio || "portrait"} crop={image.crop} />
+                <SmartImage src={image.src} alt={image.alt} ratio="square" crop={image.crop} />
               )}
-              <span
-                className={cn(
-                  "pointer-events-none absolute inset-0 flex items-end bg-brand-ink/45 p-4 transition-opacity duration-300",
-                  openIndex === index ? "opacity-100" : "opacity-0 group-focus-visible:opacity-100"
-                )}
-              >
-                {image.video && <span className="absolute inset-0 flex items-center justify-center"><svg className="h-10 w-10 text-brand-cream/80" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>}
-                <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-brand-cream">
-                  {image.tag || "View"}
+              {image.video && (
+                <span className="absolute inset-0 flex items-center justify-center bg-brand-ink/20">
+                  <svg className="h-7 w-7 text-brand-cream/90" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                 </span>
-              </span>
+              )}
             </button>
           ))}
         </div>
