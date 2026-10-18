@@ -64,11 +64,11 @@ export default function Gallery({ config }) {
             >
               {image.video ? (
                 <video
-                  src={image.video}
+                  src={image.video + '#t=0.5'}
                   className="h-full w-full object-cover"
                   muted
                   playsInline
-                  preload="metadata"
+                  preload="auto"
                 />
               ) : (
                 <SmartImage src={image.src} alt={image.alt} ratio="square" crop={image.crop} />
